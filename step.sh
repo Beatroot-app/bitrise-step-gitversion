@@ -8,6 +8,8 @@ set -ex
 # You can export Environment Variables for other Steps with
 #  envman, which is automatically installed by `bitrise setup`.
 # A very simple example:
+echo "Changing directory to ${directory}"
+cd ${directory}
 version=$(gitversion /output json | jq .MajorMinorPatch | tr -d '"')
 echo "APP_VERSION: $version"
 echo -n $version | envman add --key APP_VERSION

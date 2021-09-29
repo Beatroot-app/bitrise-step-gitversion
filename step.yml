@@ -64,18 +64,12 @@ toolkit:
     entry_file: step.sh
 
 
-# inputs:
-#   - example_step_input: Default Value - you can leave this empty if you want to
-#     opts:
-#       title: "Example Step Input"
-#       summary: Summary. No more than 2-3 sentences.
-#       description: |
-#         Description of this input.
-
-#         Can be Markdown formatted text.
-#       is_expand: true
-#       is_required: true
-#       value_options: []
+inputs:
+  - directory: $BITRISE_SOURCE_DIR
+    opts:
+      title: "Git directory"
+      is_expand: true
+      is_required: true
 
 outputs:
   - APP_VERSION:
