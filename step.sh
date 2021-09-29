@@ -8,7 +8,7 @@ set -ex
 # You can export Environment Variables for other Steps with
 #  envman, which is automatically installed by `bitrise setup`.
 # A very simple example:
-echo "$(gitversion /output json | jq .MajorMinorPatch | tr -d '"').$BUILD_NUMBER" | envman add --key APP_VERSION
+gitversion /output json | jq .MajorMinorPatch | tr -d '"' | envman add --key APP_VERSION
 # Envman can handle piped inputs, which is useful if the text you want to
 # share is complex and you don't want to deal with proper bash escaping:
 #  cat file_with_complex_input | envman add --KEY EXAMPLE_STEP_OUTPUT

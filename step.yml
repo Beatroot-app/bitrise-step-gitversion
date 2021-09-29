@@ -52,7 +52,6 @@ run_if: ""
 deps:
   brew:
   - name: git
-  - name: wget
   - name: gitversion
   - name: jq
   # apt_get:
