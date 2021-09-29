@@ -10,7 +10,8 @@ set -ex
 # A very simple example:
 echo "Changing directory to ${directory}"
 cd ${directory}
-version=$(gitversion /output json | jq .MajorMinorPatch | tr -d '"')
+echo "Selected format: ${version_format}"
+version=$(gitversion /output json | jq .${version_format} | tr -d '"')
 echo "APP_VERSION: $version"
 echo -n $version | envman add --key APP_VERSION
 # Envman can handle piped inputs, which is useful if the text you want to

@@ -70,13 +70,16 @@ inputs:
       title: "Git directory"
       is_expand: true
       is_required: true
+  - version_format: MajorMinorPatch
+    opts:
+      title: "Example Step Input"
+      summary: Choose the version export format.
+      is_expand: true
+      is_required: true
+      value_options: ['MajorMinorPatch', 'SemVer']
 
 outputs:
   - APP_VERSION:
     opts:
       title: "Git Version"
       summary: The calculated version from git flow
-      description: |
-        Description of this output.
-
-        Can be Markdown formatted text.
