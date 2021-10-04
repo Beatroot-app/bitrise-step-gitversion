@@ -13,9 +13,9 @@ cd ${directory}
 # echo "Selected format: ${version_format}"
 
 gitversion=$(gitversion /output json)
-mmp=$($gitversion | jq .MajorMinorPatch | tr -d '"')
-semver=$($gitversion | jq .SemVer | tr -d '"')
-prt=$($gitversion | jq .PreReleaseTag | tr -d '"')
+mmp=$(echo -n $gitversion | jq .MajorMinorPatch | tr -d '"')
+semver=$(echo -n $gitversion | jq .SemVer | tr -d '"')
+prt=$(echo -n $gitversion | jq .PreReleaseTag | tr -d '"')
 
 echo "APP_VERSION_MMP: $mmp"
 echo "APP_VERSION_SEMVER: $semver"
