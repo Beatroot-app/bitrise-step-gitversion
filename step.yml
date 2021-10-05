@@ -70,24 +70,16 @@ inputs:
       title: "Git directory"
       is_expand: true
       is_required: true
-  # - version_format: MajorMinorPatch
-  #   opts:
-  #     title: "Example Step Input"
-  #     summary: Choose the version export format.
-  #     is_expand: true
-  #     is_required: true
-  #     value_options: ['MajorMinorPatch', 'SemVer']
+  - version_format: MajorMinorPatch
+    opts:
+      title: "Example Step Input"
+      summary: Choose the version export format.
+      is_expand: true
+      is_required: true
+      value_options: ['MajorMinorPatch', 'SemVer']
 
 outputs:
-  - APP_VERSION_MMP:
+  - APP_VERSION:
     opts:
-      title: "MajorMinorPatch Git Version"
-      summary: The calculated MajorMinorPatch version based on git flow. eg. 1.12.5
-  - APP_VERSION_SEMVER:
-    opts:
-      title: "SemVer Git Version"
-      summary: The calculated SemVer version based on git flow. eg. 1.12.5 or 1.12.8-alpha.5 or 1.13.9-rc.2
-  - APP_VERSION_PRERELEASETAG:
-    opts:
-      title: "SemVer Pre Release Tag"
-      summary: The calculated SemVer Pre Release Tag based on git flow. eg. alpha.5 or rc.2
+      title: "Git Version"
+      summary: The calculated version from git flow

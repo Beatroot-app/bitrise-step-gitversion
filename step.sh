@@ -10,20 +10,15 @@ set -ex
 # A very simple example:
 echo "Changing directory to ${directory}"
 cd ${directory}
-# echo "Selected format: ${version_format}"
-
-gitversion=$(gitversion /output json)
-mmp=$(echo -n $gitversion | jq .MajorMinorPatch | tr -d '"')
-semver=$(echo -n $gitversion | jq .SemVer | tr -d '"')
-prt=$(echo -n $gitversion | jq .PreReleaseTag | tr -d '"')
-
-echo "APP_VERSION_MMP: $mmp"
-echo "APP_VERSION_SEMVER: $semver"
-echo "APP_VERSION_PRERELEASETAG: $prt"
-
-echo -n $mmp | envman add --key APP_VERSION_MMP
-echo -n $semver | envman add --key APP_VERSION_SEMVER
-echo -n $prt | envman add --key APP_VERSION_PRERELEASETAG
+echo "Selected format: ${version_format}"
+version=$(gitversion /output json | jq .${version_format} | tr -d '"')
+echo "APP_VERSION: $version"
+echo -n $version | envman add --key APP_VERSION
+# Envman can handle piped inputs, which is useful if the text you want to
+# share is complex and you don't want to deal with proper bash escaping:
+#  cat file_with_complex_input | envman add --KEY EXAMPLE_STEP_OUTPUT
+# You can find more usage examples on envman's GitHub page
+#  at: https://github.com/bitrise-io/envman
 
 #
 # --- Exit codes:
